@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, View, SafeAreaView, Image, ScrollView,} from 'react-native'
-import {Header, Button, Icon, Text, Content,Footer, FooterTab, Card, CardItem, Body  } from 'native-base';
+import { StyleSheet, TextInput, View, SafeAreaView, Image, ScrollView, } from 'react-native'
+import { Container, Header, Button, Icon, Text, Content, Footer, FooterTab, Card, CardItem, Body } from 'native-base';
 import Radio from '../components/radio';
 
 
 export default class Home extends Component {
   static navigationOptions = { headerShown: false }
 
- 
+
   constructor(props) {
     super(props);
     // AsyncStorage.getItem('cpfGrdirect', (err, result) => {
@@ -18,7 +18,7 @@ export default class Home extends Component {
   }
 
 
- 
+
 
 
   render() {
@@ -30,51 +30,54 @@ export default class Home extends Component {
 
     return (
       <SafeAreaView style={styles.safeview}>
-       <Header style={{ backgroundColor: '#000' }} transparent >
+        <Header style={{ backgroundColor: '#000' }} transparent >
           <View style={{
             justifyContent: 'center',
             alignItems: 'center',
             color: '#FFF'
           }}>
 
-          <Image
+            <Image
               style={{ height: 80, width: 80, marginTop: -25 }}
               source={require('../../assets/img/Logo.png')}
               resizeMode="contain"
-          />
-        
+            />
+
           </View>
         </Header>
-   
-      
-     
-        <Radio></Radio> 
 
-        
-       
-          <Content />
-        
-      
+
+        <Container style={styles.container}>
+          <Radio></Radio>
+        </Container>
+
+
+
+
+   
+
+     
+
         <Footer>
           <FooterTab>
-            <Button active  vertical onPress={() => this.props.navigation.navigate('Home')}>
-              <Icon  active style={{fontSize:20}} active type="FontAwesome"  name="music" />
-              <Text style={{fontSize:9}}>Rádio</Text>
+            <Button active vertical onPress={() => this.props.navigation.navigate('Home')}>
+              <Icon active style={{ fontSize: 20 }} active type="FontAwesome" name="music" />
+              <Text style={{ fontSize: 9 }}>Rádio</Text>
             </Button>
-            
-            <Button  vertical onPress={() => this.props.navigation.navigate('Destaques')}>
-              <Icon   style={{fontSize:20}} type="FontAwesome" name="star" />
-              <Text style={{fontSize:9}}>Destaque</Text>
+
+            <Button vertical onPress={() => this.props.navigation.navigate('Destaques')}>
+              <Icon style={{ fontSize: 20 }} type="FontAwesome" name="star" />
+              <Text style={{ fontSize: 9 }}>Destaque</Text>
             </Button>
 
             <Button vertical onPress={() => this.props.navigation.navigate('MenuGr')}>
-              <Icon  style={{fontSize:20}} type="FontAwesome" name="usd" />
-              <Text style={{fontSize:9}}>Conheça</Text>
+              <Icon style={{ fontSize: 20 }} type="FontAwesome" name="usd" />
+              <Text style={{ fontSize: 9 }}>Conheça</Text>
             </Button>
 
-            <Button  vertical onPress={() => this.props.navigation.navigate('Logout')}>
-              <Icon  style={{fontSize:20}} type="FontAwesome" name="power-off" />
-              <Text style={{fontSize:9}}>Sair</Text>
+            <Button vertical onPress={() => this.props.navigation.navigate('Logout')}>
+              <Icon style={{ fontSize: 20 }} type="FontAwesome" name="power-off" />
+              <Text style={{ fontSize: 9 }}>Sair</Text>
             </Button>
           </FooterTab>
         </Footer>
@@ -88,6 +91,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#a00f01',
     justifyContent: "center",
+  },
+
+  container: {
+    flex: 1,
+    backgroundColor: '#a00f01',
+
   },
 
   container2: {

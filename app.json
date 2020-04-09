@@ -2,8 +2,8 @@
   "name": "RedCupBoss",
   "displayName": "RedCupBoss",
   "expo": {
-    "name": "RedCupBoss",
-    "slug": "RedCupBoss",
+    "name": "RedCupBoss_2",
+    "slug": "redcupboss_2",
     "version": "1.0.0",
     "platforms": [
       "ios",
@@ -13,6 +13,7 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "description": ""
+    "description": "",
+    "githubUrl": "https://github.com/emersonrf227/redCupbossApp"
   }
 }

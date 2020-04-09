@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Alert, TouchableOpacity, Fragment } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { Constants, Audio } from 'expo-av'
-import { Grid, Col, } from 'native-base';
+import { Grid, Col,Row } from 'native-base';
 import MarqueeText from 'react-native-marquee';
 
 
@@ -138,9 +138,25 @@ export default class Radio extends Component {
 
 	renderFileInfo() {
 		const { playbackInstance, } = this.state
+
+		const style = Platform.OS === 'ios' ?
+		{ width: 200, height: 200,  marginTop:0 } :
+		{ 
+		  width: 200, 
+		  height: 200, 
+		  position: 'absolute', 
+		  left: '50%', 
+		  marginLeft: -55
+	  }; 
+
+
+
+
 		return playbackInstance ? (
 
-			<View style={{ height: 400, backgroundColor: "#000" }}>
+			
+
+			<View style={{ height: "98%", backgroundColor: "#000" }}>
 				<Grid style={{ backgroundColor: "#000" }} >
 					<Col size={9}>
 						<Text style={{ color: "#FFF" }}>Aguarde carregando rádio. </Text>
@@ -150,57 +166,122 @@ export default class Radio extends Component {
 
 		) : <TouchableOpacity style={{ marginLeft: 20, marginRight: 20, marginTop: 30 }} >
 				{this.state.isPlaying ? (
-					<View style={{ height: 400, backgroundColor: "#000" }}>
-						<Grid style={{ backgroundColor: "#000" }}>
-							<Col size={1} style={{ height: 400 }}><Ionicons name='ios-pause' size={45} color='#fff' onPress={this.handlePause} /></Col>
-							<Col size={5}><Text style={{ color: "#FFF", fontSize: 20 }}>Rádio Red Cup</Text>
+				<View style={{ height: "98%", backgroundColor: "#fff", alignItems:"center" }}>
+			<Grid style={{ backgroundColor: "#000", width: "100%", alignItems:"center"}}  >
+					<Row>
+					<Image style={style}
+					source={require('../../assets/img/disk_red.gif')}
+	
+						// source={{ uri: this.state.photoMusic }}
+					/>
+				
+					</Row>
+					</Grid>
 
-							<Text style={{ color: "#FFF", fontSize: 20 }}>Tocando agora: </Text>
-									<MarqueeText
-										style={{ fontSize: 18, color: "#fff" }}
-										duration={3000}
-										marqueeOnStart
-										loop
-										marqueeDelay={1000}
-										marqueeResetDelay={1000}
-									>
-										{this.state.musica}
-									</MarqueeText>
-							</Col>
+				<Grid style={{ backgroundColor: "#000", width: "100%", alignItems:"center"}}  >
+			
 
-						</Grid>
-						<Col size={2}>
-							<Image style={{ height: 200, width: 200, }}
-								source={{ uri: this.state.photoMusic }}
-							/>
-						</Col>
-					</View>
+				<Row>
+				<Image style={{ height: 80, width: 80, alignItems:"center", marginTop:10  }}
+					source={{ uri: this.state.photoMusic }}
+				/>
+				</Row>
+
+			
+				<Row>
+				<Col size={10}><Ionicons name='ios-pause' size={100} color='#fff' style={{marginLeft:10}} onPress={this.handlePause} /></Col>
+
+				<Col size={20}>
+								<Text style={{ color: "#FFF", fontSize: 18, marginLeft: 2 }}>Tocando agora:</Text>
+
+								<MarqueeText
+									style={{ fontSize: 15, color: "#FFF", marginLeft: 2 }}
+									duration={3000}
+									marqueeOnStart
+									loop
+									marqueeDelay={1000}
+									marqueeResetDelay={1000}
+								>
+
+								
+									{this.state.musica}
+								</MarqueeText>
+
+					
+				</Col> 
+
+				</Row>
+
+				</Grid>
+
+
+
+
+
+
+
+
+
+			</View>
 				) : (
-						<View style={{ height: 400, backgroundColor: "#000" }}>
-							<Grid style={{ backgroundColor: "#000" }} >
-								<Col size={1} style={{ height: 400 }}><Ionicons name='ios-play-circle' size={45} color='#fff' onPress={this.handlePlay} /></Col>
-								<Col size={5}><Text style={{ color: "#FFF", fontSize: 20 }}>Rádio Red Cup</Text>
-									<Text style={{ color: "#FFF", fontSize: 20 }}>Tocando agora: </Text>
+					<View style={{ height: "98%", backgroundColor: "#fff", alignItems:"center" }}>
+				
+					<Grid style={{ backgroundColor: "#000", width: "100%", alignItems:"center"}}  >
+					<Row>
+					<Image style={style}
+					source={require('../../assets/img/disk_red.png')}
+	
+						// source={{ uri: this.state.photoMusic }}
+					/>
+				
+					</Row>
+					</Grid>
+	
+					<Grid style={{ backgroundColor: "#000", width: "100%", alignItems:"center"}}  >
+				
+	
+					<Row>
+					<Image style={{ height: 80, width: 80, alignItems:"center", marginTop:10  }}
+						source={{ uri: this.state.photoMusic }}
+					/>
+					</Row>
+
+				
+					<Row>
+					<Col size={10}><Ionicons name='ios-play-circle' size={100} color='#fff' style={{marginLeft:10}}  onPress={this.handlePlay} /></Col>
+
+					<Col size={20}>
+									<Text style={{ color: "#FFF", fontSize: 18, marginLeft: 2 }}>Tocando agora:</Text>
+
 									<MarqueeText
-										style={{ fontSize: 18, color: "#fff" }}
+										style={{ fontSize: 15, color: "#FFF", marginLeft: 2 }}
 										duration={3000}
 										marqueeOnStart
 										loop
 										marqueeDelay={1000}
 										marqueeResetDelay={1000}
 									>
+
+									
 										{this.state.musica}
 									</MarqueeText>
 
-								</Col>
+						
+					</Col> 
 
-							</Grid>
-							<Col size={2}>
-								<Image style={{ height: 200, width: 200, }}
-									source={{ uri: this.state.photoMusic }}
-								/>
-							</Col>
-						</View>
+					</Row>
+	
+					</Grid>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+				</View>
 					)}
 			</TouchableOpacity>
 
