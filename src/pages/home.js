@@ -2,31 +2,27 @@ import React, { Component } from 'react';
 import { StyleSheet, TextInput, View, SafeAreaView, Image, ScrollView, } from 'react-native'
 import { Container, Header, Button, Icon, Text, Content, Footer, FooterTab, Card, CardItem, Body } from 'native-base';
 import Radio from '../components/radio';
+import * as WebBrowser from 'expo-web-browser';
 
 
-export default class Home extends Component {
+export default class Home extends React.Component {
   static navigationOptions = { headerShown: false }
 
 
   constructor(props) {
     super(props);
-    // AsyncStorage.getItem('cpfGrdirect', (err, result) => {
-    // if(result == null){
-    //   this.props.navigation.navigate('Login')
-    // }  
-    // });
+
   }
-
-
-
 
 
   render() {
 
     const _handlePressButtonAsync = async () => {
-      let result = await WebBrowser.openBrowserAsync('https://www.ilikeweb.com.br');
+      let result = await WebBrowser.openBrowserAsync('https://radioredcup.com.br');
       setResult(result);
     };
+
+    
 
     return (
       <SafeAreaView style={styles.safeview}>
@@ -38,7 +34,7 @@ export default class Home extends Component {
           }}>
 
             <Image
-              style={{ height: 80, width: 80, marginTop: -25 }}
+              style={{ height: 75, width: 75, marginTop: -10 }}
               source={require('../../assets/img/Logo.png')}
               resizeMode="contain"
             />
@@ -58,26 +54,25 @@ export default class Home extends Component {
 
      
 
-        <Footer>
-          <FooterTab>
+        <Footer >
+          <FooterTab style={{backgroundColor:"#CCC"}}>
             <Button active vertical onPress={() => this.props.navigation.navigate('Home')}>
-              <Icon active style={{ fontSize: 20 }} active type="FontAwesome" name="music" />
-              <Text style={{ fontSize: 9 }}>Rádio</Text>
+              <Icon active style={{ fontSize: 20,  }} active type="FontAwesome" name="music" />
+              <Text style={{ fontSize: 11, }}>Rádio</Text>
             </Button>
 
             <Button vertical onPress={() => this.props.navigation.navigate('Destaques')}>
-              <Icon style={{ fontSize: 20 }} type="FontAwesome" name="star" />
-              <Text style={{ fontSize: 9 }}>Destaque</Text>
+              <Icon style={{ fontSize: 20, }} type="FontAwesome" name="star" />
+              <Text style={{ fontSize: 11,  }}>Destaques</Text>
             </Button>
 
-            <Button vertical onPress={() => this.props.navigation.navigate('MenuGr')}>
-              <Icon style={{ fontSize: 20 }} type="FontAwesome" name="usd" />
-              <Text style={{ fontSize: 9 }}>Conheça</Text>
-            </Button>
-
-            <Button vertical onPress={() => this.props.navigation.navigate('Logout')}>
-              <Icon style={{ fontSize: 20 }} type="FontAwesome" name="power-off" />
-              <Text style={{ fontSize: 9 }}>Sair</Text>
+            <Button vertical onPress={_handlePressButtonAsync}>
+            <Image
+              style={{ height: 30, width: 30}}
+              source={require('../../assets/img/logoP.png')}
+              resizeMode="contain"
+            />
+            <Text style={{ fontSize: 11,   }}>Red Cup</Text> 
             </Button>
           </FooterTab>
         </Footer>

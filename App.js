@@ -4,6 +4,7 @@ import Home from './src/pages/home'
 import Destaques from './src/pages/destaques'
 
 
+
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 const AppNavigator = createStackNavigator({
